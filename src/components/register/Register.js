@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Form, Container, Row } from "react-bootstrap";
+import { Button, Form, Container, Alert } from 'react-bootstrap';
 import { baseUrl } from "../../config/index";
 import { errMsg } from "../../helpers/index";
 const RegisterUserForm = () => {
@@ -10,6 +10,7 @@ const RegisterUserForm = () => {
     userpassword: "",
   });
   const [userError, setError] = useState("");
+  const [success, setSuccess] = useState('');
 
   const { username, useremail, userpassword } = userCredentials;
 
@@ -21,15 +22,20 @@ const RegisterUserForm = () => {
         userpassword,
       };
       e.preventDefault();
-      setUserCredentials({ ...userCredentials });
+
       await axios.post(`${baseUrl}register`, data);
+      setSuccess('Registration successful. Please Verify Your Email Address');
+      setError("");
+      setUserCredentials("");
     } catch (error) {
       const { errors } = await error.response.data;
       setError(errors);
+      setSuccess('');
+      setUserCredentials('');
     }
   };
 
-  const handlChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setUserCredentials({
       ...userCredentials,
@@ -40,15 +46,16 @@ const RegisterUserForm = () => {
   return (
     <Container>
       <div className="user__error">{userError ? errMsg(userError) : null}</div>
+      {success ? <Alert variant="success">{success}</Alert> : null}
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type="password"
+            type="text"
             placeholder="Name"
-            name="userpassword"
-            value={userpassword || ""}
-            onChange={handlChange}
+            name="username"
+            value={username || ''}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -58,8 +65,8 @@ const RegisterUserForm = () => {
             type="email"
             placeholder="Enter email"
             name="useremail"
-            value={useremail || ""}
-            onChange={handlChange}
+            value={useremail || ''}
+            onChange={handleChange}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -72,8 +79,8 @@ const RegisterUserForm = () => {
             type="password"
             placeholder="Password"
             name="userpassword"
-            value={userpassword || ""}
-            onChange={handlChange}
+            value={userpassword || ''}
+            onChange={handleChange}
           />
         </Form.Group>
         <Button variant="primary" type="submit">
