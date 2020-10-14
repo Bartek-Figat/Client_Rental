@@ -6,7 +6,7 @@ const errMsg = (errors) => {
     return Object.values(errors).map((item, id) => {
       return (
         <div key={id} className={`user__error__box`}>
-          <Alert variant="danger">{item}</Alert>
+          <Alert variant="danger">{item.msg}</Alert>
         </div>
       );
     });
