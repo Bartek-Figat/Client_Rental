@@ -1,10 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { baseUrl } from '../../config/index';
+import { errMsg, serverErr } from '../../helpers/index';
 import Background from '../../images/photo/photo-1497436072909-60f360e1d4b1.jpg';
 import square from '../../images/logo-square.svg';
 
+
 const LoginUserForm = () => {
+    const [userCredentials, setUserCredentials] = useState({
+      useremail: '',
+      userpassword: '',
+    });
+    const [userErrors, setErrors] = useState('');
+    const [userError, setError] = useState('');
+    const { useremail, userpassword } = userCredentials;
+
+    let history = useHistory();
+    function redirectAfterLogin() {
+      history.push('/admin');
+    }
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = {
+          useremail,
+          userpassword,
+        };
+        const { data } = await axios.post(`${baseUrl}login`, response);
+        const { accessToken } = data.user;
+        localStorage.setItem('token', accessToken);
+        redirectAfterLogin();
+      } catch (err) {
+        const { errors, error } = await err.response.data;
+        setError(error);
+        setErrors(errors);
+        setUserCredentials('');
+      }
+    };
+
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setUserCredentials({
+        ...userCredentials,
+        [name]: value,
+      });
+    };
+
   const sectionStyle = {
     backgroundImage: `url(${Background})`,
   };
@@ -21,43 +64,49 @@ const LoginUserForm = () => {
               />
               <h2>Welcome back</h2>
             </div>
-            <form className="form-validate">
+            <form className="form-validate" onSubmit={handleSubmit}>
+              <div className="alert">
+                {userErrors ? errMsg(userErrors) : null}
+              </div>
+              <div className="alert">
+                {userError ? serverErr(userError) : null}
+              </div>
               <div className="form-group">
                 <input
                   className="form-control"
-                  name="loginUsername"
+                  name="useremail"
                   id="loginUsername"
                   type="email"
-                  placeholder="name@address.com"
+                  placeholder="Email"
+                  value={useremail || ''}
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-group mb-4">
-                <div className="row">
-                  <div className="col-auto">
-                    <a className="form-text small">Forgot password?</a>
-                  </div>
-                </div>
+                <div className="row"></div>
                 <input
                   className="form-control"
-                  name="loginPassword"
+                  name="userpassword"
                   id="loginPassword"
                   placeholder="Password"
                   type="password"
+                  value={userpassword || ''}
+                  onChange={handleChange}
                 />
               </div>
               <button className="btn btn-lg btn-block btn-primary">
                 Sign in
               </button>
-              <hr className="my-4" />
-              <p className="text-center">
-                <small className="text-muted text-center">
-                  Don't have an account yet?{' '}
-                  <Link className="nav-link" to="/register">
-                    Sign Up
-                  </Link>
-                </small>
-              </p>
             </form>
+            <hr className="my-4" />
+            <p className="text-center">
+              <small className="text-muted text-center">
+                Don't have an account yet?{' '}
+                <Link className="nav-link" to="/register">
+                  Sign Up
+                </Link>
+              </small>
+            </p>
           </div>
         </div>
         <div className="col-md-4 col-lg-6 col-xl-7 d-none d-md-block">

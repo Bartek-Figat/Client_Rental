@@ -15,4 +15,12 @@ const errMsg = (errors) => {
   }
 };
 
-export { errMsg };
+const serverErr = (errors) => {
+  if (errors) {
+    return <Alert variant="danger">{errors}</Alert>;
+  } else {
+    return null;
+  }
+};
+
+export { errMsg, serverErr };

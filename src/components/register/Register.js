@@ -3,14 +3,15 @@ import axios from "axios";
 import square from '../../images/logo-square.svg';
 import Background from '../../images/photo/photo-1497436072909-60f360e1d4b1.jpg';
 import { baseUrl } from "../../config/index";
-import { errMsg } from "../../helpers/index";
+import { errMsg, serverErr } from '../../helpers/index';
 const RegisterUserForm = () => {
   const [userCredentials, setUserCredentials] = useState({
     username: '',
     useremail: '',
     userpassword: '',
   });
-  const [userError, setError] = useState('');
+   const [userErrors, setErrors] = useState('');
+   const [userError, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   const { username, useremail, userpassword } = userCredentials;
@@ -28,9 +29,10 @@ const RegisterUserForm = () => {
       setSuccess('Registration successful. Please Verify Your Email Address');
       setError('');
       setUserCredentials('');
-    } catch (error) {
-      const { errors } = await error.response.data;
-      setError(errors);
+    } catch (err) {
+      const { errors, error } = await err.response.data;
+      setError(error);
+      setErrors(errors);
       setSuccess('');
       setUserCredentials('');
     }
@@ -70,7 +72,10 @@ const RegisterUserForm = () => {
             </div>
             <form className="form-validate" onSubmit={handleSubmit}>
               <div className="alert">
-                {userError ? errMsg(userError) : null}
+                {userErrors ? errMsg(userErrors) : null}
+              </div>
+              <div className="alert">
+                {userError ? serverErr(userError) : null}
               </div>
               {success ? (
                 <div className="alert alert-success">{success}</div>
@@ -79,7 +84,6 @@ const RegisterUserForm = () => {
                 <label className="form-label"> Name</label>
                 <input
                   className="form-control"
-                  
                   name="username"
                   id="loginUsername"
                   type="text"
