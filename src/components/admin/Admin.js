@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../../containers/navBar';
 
 const Admin = () => {
   const [userCredentials, setUserCredentials] = useState([]);
+  let history = useHistory();
+  function redirectAfterErrorToken() {
+    history.push('/login');
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -15,11 +20,12 @@ const Admin = () => {
             'x-access-token': jwt,
           },
         });
+        console.log(data);
         setUserCredentials(data);
 
         return data;
       } catch (err) {
-        console.log(err);
+        if (err.response.data.error);
       }
     }
     fetchData();

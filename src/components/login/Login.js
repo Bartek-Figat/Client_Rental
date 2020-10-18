@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../config/index';
 import { errMsg, serverErr } from '../../helpers/index';
@@ -8,45 +8,50 @@ import square from '../../images/logo-square.svg';
 
 
 const LoginUserForm = () => {
-    const [userCredentials, setUserCredentials] = useState({
-      useremail: '',
-      userpassword: '',
-    });
-    const [userErrors, setErrors] = useState('');
-    const [userError, setError] = useState('');
-    const { useremail, userpassword } = userCredentials;
+  const [userCredentials, setUserCredentials] = useState({
+    useremail: '',
+    userpassword: '',
+  });
+  const [userErrors, setErrors] = useState('');
+  const [userError, setError] = useState('');
+  const { useremail, userpassword } = userCredentials;
 
-    let history = useHistory();
-    function redirectAfterLogin() {
-      history.push('/admin');
+  let history = useHistory();
+  function redirectAfterLogin() {
+    history.push('/admin');
+  }
+
+  if (localStorage.getItem('token')) {
+    return <Redirect to="/admin" />;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = {
+        useremail,
+        userpassword,
+      };
+      const { data } = await axios.post(`${baseUrl}login`, response);
+
+      const { accessToken } = data.user;
+      localStorage.setItem('token', accessToken);
+      redirectAfterLogin();
+    } catch (err) {
+      const { errors, error } = await err.response.data;
+      setError(error);
+      setErrors(errors);
+      setUserCredentials('');
     }
+  };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const response = {
-          useremail,
-          userpassword,
-        };
-        const { data } = await axios.post(`${baseUrl}login`, response);
-        const { accessToken } = data.user;
-        localStorage.setItem('token', accessToken);
-        redirectAfterLogin();
-      } catch (err) {
-        const { errors, error } = await err.response.data;
-        setError(error);
-        setErrors(errors);
-        setUserCredentials('');
-      }
-    };
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setUserCredentials({
-        ...userCredentials,
-        [name]: value,
-      });
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
+  };
 
   const sectionStyle = {
     backgroundImage: `url(${Background})`,

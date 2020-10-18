@@ -1,14 +1,16 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
-function Logout() {
-  let history = useHistory();
-  history.push('/login');
+async function Logout() {
+   const jwt = localStorage.getItem('token');
+   await axios.delete('http://localhost:8080/logout', {
+     credentials: 'include',
+     headers: {
+       'x-access-token': jwt,
+     },
+   });
   localStorage.removeItem('token');
+  window.location.href = "/";
+  
 }
 
-function AuthButton() {
-  return <button onClick={Logout()}> Sign out </button>;
-}
-
-export { AuthButton };
+export default Logout;

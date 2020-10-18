@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import square from '../images/logo.svg';
+import Logout from '../components/logout/Logout';
 
 
 const NavBar = () => {
@@ -47,6 +48,9 @@ const NavBar = () => {
                     <Link className="nav-link" to="/admin">
                       Dashboard
                     </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button onClick={() => Logout()}> Sign out </button>
                   </li>
                 </Fragment>
               )}

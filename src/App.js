@@ -19,7 +19,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 ;
 function App() {
-  const token = localStorage.getItem('token');
   return (
     <div className="App">
       <Router>
@@ -30,15 +29,13 @@ function App() {
             <Route
               exact
               path="/login"
-              render={() =>
-                token ? <Redirect to="/admin" /> : <LoginUserForm />
-              }
+              render={() =><LoginUserForm />}
             />
             <Route
               exact
               path="/register"
               render={() =>
-                token ? <Redirect to="/admin" /> : <RegisterUserForm />
+                 localStorage.getItem('token') ? <Redirect to="/admin" /> : <RegisterUserForm />
               }
             />
             <PrivateRoute exact path="/admin" component={UserDashboardServer} />
