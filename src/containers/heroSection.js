@@ -9,7 +9,7 @@ const sectionStyle = {
 
 const heroSection = () => {
   const sectionStyle = {
-    backgroundImage: `url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80)`,
+    backgroundImage: `url(https://images.unsplash.com/photo-1593604340846-4fbe9763a8f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80)`,
   };
   return (
     <section

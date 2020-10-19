@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from "axios";
 import square from '../../images/logo-square.svg';
 import Background from '../../images/photo/photo-1497436072909-60f360e1d4b1.jpg';

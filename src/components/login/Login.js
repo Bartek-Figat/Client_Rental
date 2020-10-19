@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../config/index';
 import { errMsg, serverErr } from '../../helpers/index';
@@ -15,15 +15,14 @@ const LoginUserForm = () => {
   const [userErrors, setErrors] = useState('');
   const [userError, setError] = useState('');
   const { useremail, userpassword } = userCredentials;
+  const [loading, setLoading] = useState(false);
 
   let history = useHistory();
   function redirectAfterLogin() {
     history.push('/admin');
   }
 
-  if (localStorage.getItem('token')) {
-    return <Redirect to="/admin" />;
-  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,9 +35,11 @@ const LoginUserForm = () => {
 
       const { accessToken } = data.user;
       localStorage.setItem('token', accessToken);
+      setLoading(true);
       redirectAfterLogin();
     } catch (err) {
-      const { errors, error } = await err.response.data;
+      const { errors } = await err.response.data;
+      const {  error } = await err.response.data;
       setError(error);
       setErrors(errors);
       setUserCredentials('');
@@ -65,7 +66,7 @@ const LoginUserForm = () => {
               <img
                 className="img-fluid mb-3"
                 src={square}
-                style={{ maxWidth: '4rem' }}
+                style={{ maxWidth: '12rem' }}
               />
               <h2>Welcome back</h2>
             </div>
@@ -99,9 +100,11 @@ const LoginUserForm = () => {
                   onChange={handleChange}
                 />
               </div>
-              <button className="btn btn-lg btn-block btn-primary">
-                Sign in
-              </button>
+            
+                <button className="btn btn-lg btn-block btn-primary">
+                  Sign in
+                </button>
+           
             </form>
             <hr className="my-4" />
             <p className="text-center">

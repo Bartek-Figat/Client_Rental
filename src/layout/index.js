@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import NavBar from '../containers/navBar';
 import HeroSection from '../containers/heroSection';
-import TabList from '../containers/tabList';
+import ImageSlider from '../containers/img_slider';
 
 const Layout = () => {
   return (
     <Fragment>
       <NavBar />
       <HeroSection />
-      <TabList />
+      <ImageSlider />
     </Fragment>
   );
 };

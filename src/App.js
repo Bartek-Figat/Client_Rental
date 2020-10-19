@@ -29,13 +29,23 @@ function App() {
             <Route
               exact
               path="/login"
-              render={() =><LoginUserForm />}
+              render={() =>
+                localStorage.getItem('token') ? (
+                  <Redirect to="/admin" />
+                ) : (
+                  <LoginUserForm />
+                )
+              }
             />
             <Route
               exact
               path="/register"
               render={() =>
-                 localStorage.getItem('token') ? <Redirect to="/admin" /> : <RegisterUserForm />
+                localStorage.getItem('token') ? (
+                  <Redirect to="/admin" />
+                ) : (
+                  <RegisterUserForm />
+                )
               }
             />
             <PrivateRoute exact path="/admin" component={UserDashboardServer} />

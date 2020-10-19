@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import square from '../images/logo.svg';
+import square from '../images/logo-square.svg';
 import Logout from '../components/logout/Logout';
 
 
@@ -12,7 +12,11 @@ const NavBar = () => {
         <div className="container-fluid">
           <div className="d-flex align-items-center">
             <Link className="nav-link" className="navbar-brand py-1" to="/">
-              <img src={square} alt="Directory logo" />
+              <img
+                src={square}
+                alt="Directory logo"
+                style={{ maxWidth: '6rem' }}
+              />
             </Link>
           </div>
           <button
@@ -50,15 +54,15 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <button onClick={() => Logout()}> Sign out </button>
+                    <button
+                      className="nav-link logout-btn"
+                      onClick={() => Logout()}
+                    >
+                      Sign out{' '}
+                    </button>
                   </li>
                 </Fragment>
               )}
-              <li className="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-                <a className="btn btn-primary" href="user-add-0.html">
-                  Add a listing
-                </a>
-              </li>
             </ul>
           </div>
         </div>
