@@ -20,10 +20,10 @@ const heroSection = () => {
         <div className="row">
           <div className="col-xl-8">
             <h1 className="display-3 font-weight-bold text-shadow">
-              Let us guide you home
+              Pozwól nam poprowadzić Cię do domu
             </h1>
             <p className="text-lg text-shadow mb-6">
-              Uncover the best offers on the real estate market.
+              Odkryj najlepsze oferty na rynku nieruchomości.
             </p>
           </div>
         </div>

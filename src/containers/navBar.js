@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineBars } from 'react-icons/ai';
 import square from '../images/logo-square.svg';
 import Logout from '../components/logout/Logout';
 
@@ -15,7 +16,7 @@ const NavBar = () => {
               <img
                 src={square}
                 alt="Directory logo"
-                style={{ maxWidth: '6rem' }}
+                style={{ maxWidth: '4rem' }}
               />
             </Link>
           </div>
@@ -28,7 +29,8 @@ const NavBar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i className="fa fa-bars"></i>
+            <AiOutlineBars className="fa fa-bars" />
+            
           </button>
 
           <div className="collapse navbar-collapse" id="navbarCollapse">
