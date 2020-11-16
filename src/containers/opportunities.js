@@ -25,7 +25,6 @@ const opportunities = () => {
                   <Link className="btn btn-lg btn-primary" to="/register">
                     Utwórz swoje konto
                   </Link>
-                  <p className="text-muted text-small">Za darmo!!</p>
                 </p>
               ) : (
                 <Link className="btn btn-lg btn-primary" to="/admin">

@@ -1,8 +1,10 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { baseUrl } from '../config/index';
 
-async function Logout() {
+export const logoutUser = createAsyncThunk('logout/fetch', async () => {
   const jwt = localStorage.getItem('token');
-  await axios.delete('http://localhost:8080/logout', {
+  await axios.delete(`${baseUrl}logout`, {
     credentials: 'include',
     headers: {
       'x-access-token': jwt,
@@ -10,6 +12,4 @@ async function Logout() {
   });
   localStorage.removeItem('token');
   window.location.href = '/';
-}
-
-export default Logout;
+});

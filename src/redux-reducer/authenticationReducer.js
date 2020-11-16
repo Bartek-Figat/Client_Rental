@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { baseUrl } from '../../config/index';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { baseUrl } from '../config/index';
 
-const Authentication = () => {
+export const userAuthentication = createAsyncThunk('logout/fetch', async () => {
   let history = useHistory();
   function redirectAfterConfirmation() {
     history.push('/login');
   }
   const str = history.location.pathname;
-
   const path = str.split('/');
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -24,9 +23,6 @@ const Authentication = () => {
         }
       }
     }
-    fetchData();
+    return fetchData();
   }, []);
-
-  return <div>...</div>;
-};
-export default Authentication;
+});

@@ -2,15 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { BsBoxArrowInRight } from 'react-icons/bs';
-import { GiPriceTag } from 'react-icons/gi';
-import img_one from '../images/photo/photo-1484154218962-a197022b5858.jpg';
-import img_two from '../images/photo/photo-1488805990569-3c9e1d76d51c.jpg';
-import img_three from '../images/photo/photo-1467987506553-8f3916508521.jpg';
-import img_four from '../images/photo/photo-1426122402199-be02db90eb90.jpg';
 import img_five from '../images/photo/restaurant-1515164783716-8e6920f3e77c.jpg';
+
 import 'swiper/swiper-bundle.min.css';
-
-
 
 const ImageSlider = () => {
   return (
@@ -19,13 +13,10 @@ const ImageSlider = () => {
         <div className="container">
           <div className="row mb-lg-6">
             <div className="col-md-8">
-              <p className="subtitle text-secondary">
-                ZNAJDŹ SWÓJ DOM JUŻ DZIŚ
-              </p>
-              
+              <p className="subtitle text-secondary">ZNAJDŹ SWÓJ DOM JUŻ DZIŚ</p>
             </div>
             <div className="col-md-4 d-md-flex align-items-center justify-content-end">
-              <Link className="text-muted text-sm" to="/">
+              <Link className="text-muted text-sm" to="/category">
                 Zobacz wszystkie nowe miejsca
                 <BsBoxArrowInRight className="fas fa-angle-double-right ml-2" />
               </Link>
@@ -34,304 +25,170 @@ const ImageSlider = () => {
         </div>
 
         <div className="container-fluid">
-          <div className="swiper-container swiper-container-mx-negative items-slider-full px-lg-5 pt-3">
-            <Swiper spaceBetween={1} slidesPerView={5}>
-              <SwiperSlide>
-                <div className="swiper-wrapper pb-5">
-                  <div className="swiper-slide h-auto px-2">
-                    <div
-                      className="w-100 h-100 hover-animate"
-                      data-marker-id="59c0c8e33b1527bfe2abaf92"
-                    >
-                      <div className="card h-100 border-0 shadow">
-                        <div className="card-img-top overflow-hidden gradient-overlay">
-                          {' '}
-                          <img
-                            className="img-fluid"
-                            src={img_five}
-                            alt="Modern, Well-Appointed Room"
-                          />
-                          <a className="tile-link" href="detail-rooms.html"></a>
-                        </div>
-                        <div className="card-body d-flex align-items-center">
-                          <div className="w-100">
-                            <h6 className="card-title">
-                              <a
-                                className="text-decoration-none text-dark"
-                                href="detail-rooms.html"
-                              >
-                                Modern, Well-Appointed Room
-                              </a>
-                            </h6>
-                            <p className="text-sm text-secondary card-subtitle mb-2">
-                              <i className="fa fa-map-marker text-secondary opacity-4 mr-1"></i>
-                              San Francisco
-                            </p>
-                            <p className="text-sm text-muted text-uppercase">
-                              House
-                            </p>
-                            <p className="card-text d-flex justify-content-between text-gray-800 text-sm">
-                              <span className="mr-1">
-                                <i className="fa fa-ruler-combined text-primary opacity-4 text-xs mr-1"></i>
-                                350 m<sup>2</sup>{' '}
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bed text-primary opacity-4 text-xs mr-1"></i>
-                                3
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bath text-primary opacity-4 text-xs mr-1"></i>
-                                2
-                              </span>
-                              <span>
-                                <GiPriceTag className="fa fa-tag text-primary opacity-4 text-xs mr-1" />
-                                $150k
-                              </span>
-                            </p>
-                          </div>
-                        </div>
+          <div className="container">
+            <div className="row">
+              {}
+              <div
+                className="col-sm-6 col-xl-4 mb-5 hover-animate"
+                data-marker-id="59c0c8e33b1527bfe2abaf92"
+              >
+                <div className="card h-100 border-0 shadow">
+                  <div
+                    className="card-img-top overflow-hidden dark-overlay bg-cover"
+                    style={{
+                      backgroundImage: `url(${img_five})`,
+                      minHeight: `200px`,
+                    }}
+                  >
+                    <a className="tile-link" href="detail.html"></a>
+                    <div className="card-img-overlay-bottom z-index-20">
+                      <h4 className="text-white text-shadow">Blue Hill</h4>
+                      <p className="mb-2 text-xs">
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-gray-300"> </i>
+                      </p>
+                    </div>
+                    <div className="card-img-overlay-top d-flex justify-content-between align-items-center">
+                      <div className="badge badge-transparent badge-pill px-3 py-2">
+                        Restaurants
                       </div>
+                      <svg className="svg-icon text-white"></svg>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="swiper-wrapper pb-5">
-                  <div className="swiper-slide h-auto px-2">
-                    <div
-                      className="w-100 h-100 hover-animate"
-                      data-marker-id="59c0c8e33b1527bfe2abaf92"
-                    >
-                      <div className="card h-100 border-0 shadow">
-                        <div className="card-img-top overflow-hidden gradient-overlay">
-                          {' '}
-                          <img
-                            className="img-fluid"
-                            src={img_one}
-                            alt="Modern, Well-Appointed Room"
-                          />
-                          <a className="tile-link" href="detail-rooms.html"></a>
-                        </div>
-                        <div className="card-body d-flex align-items-center">
-                          <div className="w-100">
-                            <h6 className="card-title">
-                              <a
-                                className="text-decoration-none text-dark"
-                                href="detail-rooms.html"
-                              >
-                                Modern, Well-Appointed Room
-                              </a>
-                            </h6>
-                            <p className="text-sm text-secondary card-subtitle mb-2">
-                              <i className="fa fa-map-marker text-secondary opacity-4 mr-1"></i>
-                              San Francisco
-                            </p>
-                            <p className="text-sm text-muted text-uppercase">
-                              House
-                            </p>
-                            <p className="card-text d-flex justify-content-between text-gray-800 text-sm">
-                              <span className="mr-1">
-                                <i className="fa fa-ruler-combined text-primary opacity-4 text-xs mr-1"></i>
-                                350 m<sup>2</sup>{' '}
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bed text-primary opacity-4 text-xs mr-1"></i>
-                                3
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bath text-primary opacity-4 text-xs mr-1"></i>
-                                2
-                              </span>
-                              <span>
-                                <GiPriceTag className="fa fa-tag text-primary opacity-4 text-xs mr-1" />
-                                $150k
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="card-body">
+                    <p className="text-sm text-muted mb-3">
+                      {' '}
+                      Cupidatat excepteur non dolore laborum et quis nostrud veniam dolore deserunt.
+                      Pariatur dolore ut in elit id nulla. Irur...
+                    </p>
+                    <p className="text-sm text-muted text-uppercase mb-1">
+                      By{' '}
+                      <a href="#" className="text-dark">
+                        Matt Damon
+                      </a>
+                    </p>
+                    <p className="text-sm mb-0">
+                      <a className="mr-1" href="#">
+                        Restaurant,
+                      </a>
+                      <a className="mr-1" href="#">
+                        Contemporary
+                      </a>
+                    </p>
                   </div>
                 </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="swiper-wrapper pb-5">
-                  <div className="swiper-slide h-auto px-2">
-                    <div
-                      className="w-100 h-100 hover-animate"
-                      data-marker-id="59c0c8e33b1527bfe2abaf92"
-                    >
-                      <div className="card h-100 border-0 shadow">
-                        <div className="card-img-top overflow-hidden gradient-overlay">
-                          {' '}
-                          <img
-                            className="img-fluid"
-                            src={img_two}
-                            alt="Modern, Well-Appointed Room"
-                          />
-                          <a className="tile-link" href="detail-rooms.html"></a>
-                        </div>
-                        <div className="card-body d-flex align-items-center">
-                          <div className="w-100">
-                            <h6 className="card-title">
-                              <a
-                                className="text-decoration-none text-dark"
-                                href="detail-rooms.html"
-                              >
-                                Modern, Well-Appointed Room
-                              </a>
-                            </h6>
-                            <p className="text-sm text-secondary card-subtitle mb-2">
-                              <i className="fa fa-map-marker text-secondary opacity-4 mr-1"></i>
-                              San Francisco
-                            </p>
-                            <p className="text-sm text-muted text-uppercase">
-                              House
-                            </p>
-                            <p className="card-text d-flex justify-content-between text-gray-800 text-sm">
-                              <span className="mr-1">
-                                <i className="fa fa-ruler-combined text-primary opacity-4 text-xs mr-1"></i>
-                                350 m<sup>2</sup>{' '}
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bed text-primary opacity-4 text-xs mr-1"></i>
-                                3
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bath text-primary opacity-4 text-xs mr-1"></i>
-                                2
-                              </span>
-                              <span>
-                                <GiPriceTag className="fa fa-tag text-primary opacity-4 text-xs mr-1" />
-                                $150k
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+              </div>
+
+              <div
+                className="col-sm-6 col-xl-4 mb-5 hover-animate"
+                data-marker-id="59c0c8e322f3375db4d89128"
+              >
+                <div className="card h-100 border-0 shadow">
+                  <div
+                    className="card-img-top overflow-hidden dark-overlay bg-cover"
+                    style={{
+                      backgroundImage: `url(${img_five})`,
+                      minHeight: `200px`,
+                    }}
+                  >
+                    <a className="tile-link" href="detail.html"></a>
+                    <div className="card-img-overlay-bottom z-index-20">
+                      <h4 className="text-white text-shadow">Plutorque</h4>
+                      <p className="mb-2 text-xs">
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                      </p>
+                    </div>
+                    <div className="card-img-overlay-top d-flex justify-content-between align-items-center">
+                      <div className="badge badge-transparent badge-pill px-3 py-2">Restaurant</div>
+                      <svg className="svg-icon text-white"></svg>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="swiper-wrapper pb-5">
-                  <div className="swiper-slide h-auto px-2">
-                    <div
-                      className="w-100 h-100 hover-animate"
-                      data-marker-id="59c0c8e33b1527bfe2abaf92"
-                    >
-                      <div className="card h-100 border-0 shadow">
-                        <div className="card-img-top overflow-hidden gradient-overlay">
-                          {' '}
-                          <img
-                            className="img-fluid"
-                            src={img_three}
-                            alt="Modern, Well-Appointed Room"
-                          />
-                          <a className="tile-link" href="detail-rooms.html"></a>
-                        </div>
-                        <div className="card-body d-flex align-items-center">
-                          <div className="w-100">
-                            <h6 className="card-title">
-                              <a
-                                className="text-decoration-none text-dark"
-                                href="detail-rooms.html"
-                              >
-                                Modern, Well-Appointed Room
-                              </a>
-                            </h6>
-                            <p className="text-sm text-secondary card-subtitle mb-2">
-                              <i className="fa fa-map-marker text-secondary opacity-4 mr-1"></i>
-                              San Francisco
-                            </p>
-                            <p className="text-sm text-muted text-uppercase">
-                              House
-                            </p>
-                            <p className="card-text d-flex justify-content-between text-gray-800 text-sm">
-                              <span className="mr-1">
-                                <i className="fa fa-ruler-combined text-primary opacity-4 text-xs mr-1"></i>
-                                350 m<sup>2</sup>{' '}
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bed text-primary opacity-4 text-xs mr-1"></i>
-                                3
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bath text-primary opacity-4 text-xs mr-1"></i>
-                                2
-                              </span>
-                              <span>
-                                <GiPriceTag className="fa fa-tag text-primary opacity-4 text-xs mr-1" />
-                                $150k
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="card-body">
+                    <p className="text-sm text-muted mb-3">
+                      {' '}
+                      Proident irure eiusmod velit veniam consectetur id minim irure et nostrud
+                      mollit magna velit. Commodo amet proident aliq...
+                    </p>
+                    <p className="text-sm text-muted text-uppercase mb-1">
+                      By{' '}
+                      <a href="#" className="text-dark">
+                        Matt Damon
+                      </a>
+                    </p>
+                    <p className="text-sm mb-0">
+                      <a className="mr-1" href="#">
+                        Restaurant,
+                      </a>
+                      <a className="mr-1" href="#">
+                        Fusion
+                      </a>
+                    </p>
                   </div>
                 </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="swiper-wrapper pb-5">
-                  <div className="swiper-slide h-auto px-2">
-                    <div
-                      className="w-100 h-100 hover-animate"
-                      data-marker-id="59c0c8e33b1527bfe2abaf92"
-                    >
-                      <div className="card h-100 border-0 shadow">
-                        <div className="card-img-top overflow-hidden gradient-overlay">
-                          {' '}
-                          <img
-                            className="img-fluid"
-                            src={img_four}
-                            alt="Modern, Well-Appointed Room"
-                          />
-                          <a className="tile-link" href="detail-rooms.html"></a>
-                        </div>
-                        <div className="card-body d-flex align-items-center">
-                          <div className="w-100">
-                            <h6 className="card-title">
-                              <a
-                                className="text-decoration-none text-dark"
-                                href="detail-rooms.html"
-                              >
-                                Modern, Well-Appointed Room
-                              </a>
-                            </h6>
-                            <p className="text-sm text-secondary card-subtitle mb-2">
-                              <i className="fa fa-map-marker text-secondary opacity-4 mr-1"></i>
-                              San Francisco
-                            </p>
-                            <p className="text-sm text-muted text-uppercase">
-                              House
-                            </p>
-                            <p className="card-text d-flex justify-content-between text-gray-800 text-sm">
-                              <span className="mr-1">
-                                <i className="fa fa-ruler-combined text-primary opacity-4 text-xs mr-1"></i>
-                                350 m<sup>2</sup>{' '}
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bed text-primary opacity-4 text-xs mr-1"></i>
-                                3
-                              </span>
-                              <span className="mr-1">
-                                <i className="fa fa-bath text-primary opacity-4 text-xs mr-1"></i>
-                                2
-                              </span>
-                              <span>
-                                <GiPriceTag className="fa fa-tag text-primary opacity-4 text-xs mr-1" />
-                                $150k
-                              </span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+              </div>
+
+              <div
+                className="col-sm-6 col-xl-4 mb-5 hover-animate"
+                data-marker-id="59c0c8e3a31e62979bf147c9"
+              >
+                <div className="card h-100 border-0 shadow">
+                  <div
+                    className="card-img-top overflow-hidden dark-overlay bg-cover"
+                    style={{
+                      backgroundImage: `url(${img_five})`,
+                      minHeight: `200px`,
+                    }}
+                  >
+                    <a className="tile-link" href="detail.html"></a>
+                    <div className="card-img-overlay-bottom z-index-20">
+                      <h4 className="text-white text-shadow">Junipoor</h4>
+                      <p className="mb-2 text-xs">
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                        <i className="fa fa-star text-warning"></i>
+                      </p>
+                    </div>
+                    <div className="card-img-overlay-top d-flex justify-content-between align-items-center">
+                      <div className="badge badge-transparent badge-pill px-3 py-2">Music club</div>
+                      <svg className="svg-icon text-white"></svg>
                     </div>
                   </div>
+                  <div className="card-body">
+                    <p className="text-sm text-muted mb-3">
+                      {' '}
+                      Lorem amet ex duis in et fugiat consectetur laborum eiusmod labore. Quis
+                      cupidatat et do dolor in in magna. Eu sit quis ...
+                    </p>
+                    <p className="text-sm text-muted text-uppercase mb-1">
+                      By{' '}
+                      <a href="#" className="text-dark">
+                        Matt Damon
+                      </a>
+                    </p>
+                    <p className="text-sm mb-0">
+                      <a className="mr-1" href="#">
+                        Music,
+                      </a>
+                      <a className="mr-1" href="#">
+                        Techno,
+                      </a>
+                      <a className="mr-1" href="#">
+                        House
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </SwiperSlide>
-            </Swiper>
+              </div>
+            </div>
           </div>
         </div>
       </section>

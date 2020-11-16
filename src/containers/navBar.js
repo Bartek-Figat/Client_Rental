@@ -4,20 +4,15 @@ import { AiOutlineBars } from 'react-icons/ai';
 import square from '../images/logo-square.svg';
 import Logout from '../components/logout/Logout';
 
-
 const NavBar = () => {
-   const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   return (
     <header className="header">
       <nav className="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
         <div className="container-fluid">
           <div className="d-flex align-items-center">
             <Link className="nav-link" className="navbar-brand py-1" to="/">
-              <img
-                src={square}
-                alt="Directory logo"
-                style={{ maxWidth: '4rem' }}
-              />
+              <img src={square} alt="Directory logo" style={{ maxWidth: '4rem' }} />
             </Link>
           </div>
           <button
@@ -30,9 +25,7 @@ const NavBar = () => {
             aria-label="Toggle navigation"
           >
             <AiOutlineBars className="fa fa-bars" />
-            
           </button>
-
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav ml-auto">
               {!token ? (
@@ -56,10 +49,7 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <button
-                      className="nav-link logout-btn"
-                      onClick={() => Logout()}
-                    >
+                    <button className="nav-link logout-btn" onClick={() => Logout()}>
                       Sign out{' '}
                     </button>
                   </li>

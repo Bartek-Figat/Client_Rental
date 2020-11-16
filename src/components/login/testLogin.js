@@ -1,46 +1,44 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import { baseUrl } from '../../config/index';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
+import { fetchUserAfterLogin } from '../../redux-reducer/loginReducer';
 import { errMsg, serverErr } from '../../helpers/index';
 import Background from '../../images/photo/photo-1497436072909-60f360e1d4b1.jpg';
 import square from '../../images/logo-square.svg';
 
 const LoginUserForm = () => {
+  const { loading, error } = useSelector((state) => state.loginReducer, shallowEqual);
+
+  const dispatch = useDispatch();
   const [userCredentials, setUserCredentials] = useState({
     useremail: '',
     userpassword: '',
   });
   const [userErrors, setErrors] = useState('');
   const [userError, setError] = useState('');
-  const { useremail, userpassword } = userCredentials;
-  const [loading, setLoading] = useState(false);
 
-  let history = useHistory();
+  const history = useHistory();
   function redirectAfterLogin() {
     history.push('/admin');
   }
 
+  const { useremail, userpassword } = userCredentials;
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const response = {
         useremail,
         userpassword,
       };
-      setLoading(true);
-      const { data } = await axios.post(`${baseUrl}login`, response);
-      const { accessToken } = data.user;
-      localStorage.setItem('token', accessToken);
+      const resultAction = await dispatch(fetchUserAfterLogin(response));
+      unwrapResult(resultAction);
       redirectAfterLogin();
+      setErrors('');
+      setError('');
     } catch (err) {
-      const { errors } = await err.response.data;
-      const { error } = await err.response.data;
-      setError(error);
-      setErrors(errors);
-      setUserCredentials('');
-      setLoading(false);
+      const resultAction = await dispatch(fetchUserAfterLogin());
     }
   };
 
@@ -91,9 +89,9 @@ const LoginUserForm = () => {
                 />
               </div>
               {loading ? (
-                <button className="btn btn-lg btn-block btn-primary" type="button" disabled>
+                <button className="btn btn-lg btn-block btn-primary" disabled>
                   <span
-                    className="spinner-border spinner-border-sm"
+                    class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
                   ></span>
@@ -122,4 +120,4 @@ const LoginUserForm = () => {
   );
 };
 
-export default connect(null)(LoginUserForm);
+export default LoginUserForm;
